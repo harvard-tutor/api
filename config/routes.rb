@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  resources :ingredients
-  devise_for :admin_users, ActiveAdmin::Devise.config
+  devise_for :admin_users, {class_name: 'User'}.merge(ActiveAdmin::Devise.config)
   ActiveAdmin.routes(self)
 
-  namespace :api do
-    end
+  devise_for :users
+
+  scope '/api' do
+    resources :users
+  end
 end
