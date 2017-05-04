@@ -36,10 +36,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'foreman'
-  gem 'minitest-rails-capybara'
-  gem 'poltergeist'
   gem 'simplecov'
-  gem 'spinach-rails'
 
   # Added by Dion for productivity
   gem 'awesome_print', require: 'ap' # pretty print AR objects in console using 'ap'
@@ -51,8 +48,9 @@ group :development, :test do
   # Stops mac storage from filling up
   gem 'puma-fsevent_cleanup'
 
-  # Test React
-  gem 'enzyme'
+  # Testing
+  gem 'rspec-rails', '~> 3.5'
+  gem 'database_cleaner'
 end
 
 group :development do
