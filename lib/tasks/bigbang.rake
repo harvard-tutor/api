@@ -1,7 +1,12 @@
 # lib/tasks/bigbang.rake
+def system!(*args)
+  system(*args) || abort("\n== Command #{args} failed ==")
+end
+
 namespace :db do
   desc 'Drop/create/migrate/seed/demodata db'
   task bigbang: :environment do
+    system! 'bin/rails db:environment:set RAILS_ENV=development'
     Rake::Task['db:drop'].invoke
     Rake::Task['db:create'].invoke
     Rake::Task['db:migrate'].invoke
