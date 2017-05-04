@@ -4,6 +4,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       ## Database authenticatable
       t.string :first_name,         null: false
       t.string :last_name,          null: false
+      t.integer :age,
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
 
@@ -32,6 +33,27 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
 
+      ## Location info
+      t.string :country
+
+      ## DOB
+      t.date :date_of_birth
+
+      ## Other info
+      t.string :language
+      t.string :biography, default: ""
+
+      ## profile picture
+      t.string :profile_picture
+
+      ## id for Stripe payment information
+      t.string :customer_id
+
+      ## number of prepaid hours of tutoring bought
+      t.integer :credit_hours, default: 0
+
+      ## flag indicating whether payment info was valid, when last checked
+      t.boolean :has_valid_payment_info, default: false
 
       t.timestamps null: false
     end
