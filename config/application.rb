@@ -27,10 +27,14 @@ module Api
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
     config.app_generators.scaffold_controller = :scaffold_controller
-    
+
     config.middleware.use Rack::MethodOverride
     config.middleware.use ActionDispatch::Flash
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use ActionDispatch::Session::CookieStore
+
+    config.generators do |g|
+      g.factory_girl false
+    end
   end
 end
